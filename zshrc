@@ -1,8 +1,8 @@
 # Never know when you're gonna need to popd!
-setopt AUTO_PUSHD
+#setopt AUTO_PUSHD
 
 # Allow completing of the remainder of a command
-bindkey "^N" insert-last-word
+#bindkey "^N" insert-last-word
 
 # Show contents of directory after cd-ing into it
 chpwd() {
@@ -34,14 +34,15 @@ stty start undef
 stty stop undef
 
 # RVM 
-[[ -s "/Users/ben/.rvm/scripts/rvm" ]] && source "/Users/ben/.rvm/scripts/rvm"
+[[ -s "/Users/einar/.rvm/scripts/rvm" ]] && source "/Users/einar/.rvm/scripts/rvm"
 
 # Source my custom files after oh-my-zsh so I can override things.
 source $HOME/.dotfiles/zsh/aliases
 source $HOME/.dotfiles/zsh/functions
 
 # Customize to your needs...
-export PATH=bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180/bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/ben/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/ben/.rvm/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+#export PATH=bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180/bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/ben/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/ben/.rvm/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/usr/texbin
