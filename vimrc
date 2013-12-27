@@ -22,16 +22,14 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'koron/nyancat-vim'
-Bundle 'elixir-lang/vim-elixir'
+
+" TDD with RSpec
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'jgdavey/tslime.vim'
 
 " nelstrom's plugin depends on kana's
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
-
-" Clojure
-Bundle 'tpope/vim-foreplay'
-Bundle 'tpope/vim-classpath'
-Bundle 'guns/vim-clojure-static'
 
 " ================
 " Ruby stuff
@@ -83,10 +81,8 @@ map <Leader>fa :sp test/factories.rb<CR>
 map <Leader>h :CommandT<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>j :CommandT app/assets/javascripts<cr>client/
-map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Rmodel 
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
-map <Leader>o :w<cr>:call RunCurrentLineInTest()<CR>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 map <Leader>pn :sp ~/Dropbox/work/thoughtbot/notes/project-notes.txt<cr>
 map <Leader>ra :%s/
@@ -107,7 +103,12 @@ map <Leader>ss ds)i <esc>:w<cr>
 map <Leader>st :!ruby -Itest % -n "//"<left><left>
 map <Leader>su :RSunittest 
 map <Leader>sv :RSview 
-map <Leader>t :w<cr>:call RunCurrentTest()<CR>
+" vim-rspec
+map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
+map <Leader>s :w<cr>:call RunNearestSpec()<CR>
+map <Leader>l :w<cr>:call RunLastSpec()<CR>
+map <Leader>a :w<cr>:call RunAllSpecs()<CR>
+
 map <Leader>y :!rspec --drb %<cr>
 map <Leader>u :Runittest<cr>
 map <Leader>vc :RVcontroller<cr>
@@ -123,7 +124,6 @@ map <Leader>x :exec getline(".")<cr>
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
 map <C-h> :nohl<cr>
@@ -318,6 +318,9 @@ endfunction
 
 let g:CommandTMaxHeight=50
 let g:CommandTMatchWindowAtTop=1
+
+" Run rspec in a tmux pane
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader
 " situations.

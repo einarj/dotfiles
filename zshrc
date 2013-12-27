@@ -39,10 +39,14 @@ stty stop undef
 # Source my custom files after oh-my-zsh so I can override things.
 source $HOME/.dotfiles/zsh/aliases
 source $HOME/.dotfiles/zsh/functions
+source $HOME/.dotfiles/zsh/git-prompt/zshrc.sh
+PROMPT='%B%m%~%b$(git_super_status) %# '
 
 # Customize to your needs...
 #export PATH=bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180/bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/ben/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/ben/.rvm/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:/usr/texbin
+export PATH=$PATH:/usr/texbin
+export PATH=/usr/local/bin:$PATH
+
