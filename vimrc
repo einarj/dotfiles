@@ -21,7 +21,6 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
-Bundle 'koron/nyancat-vim'
 
 " TDD with RSpec
 Bundle 'thoughtbot/vim-rspec'
