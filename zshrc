@@ -33,6 +33,9 @@ SAVEHIST=20000
 stty start undef
 stty stop undef
 
+# Enable autocomplete for git
+autoload -U compinit && compinit
+
 # RVM 
 [[ -s "/Users/einar/.rvm/scripts/rvm" ]] && source "/Users/einar/.rvm/scripts/rvm"
 
