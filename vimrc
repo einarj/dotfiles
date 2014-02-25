@@ -30,6 +30,13 @@ Bundle 'jgdavey/tslime.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
+" Refactoring tools
+Bundle 'sandeepravi/refactor-rails.vim'
+Bundle 'AndrewRadev/linediff.vim'
+
+" Syntax
+Bundle 'tpope/vim-haml'
+
 " ================
 " Ruby stuff
 " ================
@@ -107,6 +114,9 @@ map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
 map <Leader>s :w<cr>:call RunNearestSpec()<CR>
 map <Leader>l :w<cr>:call RunLastSpec()<CR>
 map <Leader>a :w<cr>:call RunAllSpecs()<CR>
+
+" refactor-rails.vim
+vmap <Leader>rem :ExtractMethod<cr>
 
 map <Leader>y :!rspec --drb %<cr>
 map <Leader>u :Runittest<cr>
