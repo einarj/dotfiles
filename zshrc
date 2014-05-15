@@ -53,3 +53,4 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/texbin
 export PATH=/usr/local/bin:$PATH
 
+export EDITOR="vim"
