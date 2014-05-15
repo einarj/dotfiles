@@ -21,6 +21,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
+Bundle 'mileszs/ack.vim'
 
 " TDD with RSpec
 Bundle 'thoughtbot/vim-rspec'
@@ -36,6 +37,7 @@ Bundle 'AndrewRadev/linediff.vim'
 
 " Syntax
 Bundle 'tpope/vim-haml'
+Bundle 'mustache/vim-mustache-handlebars'
 
 " ================
 " Ruby stuff
@@ -329,7 +331,7 @@ let g:CommandTMaxHeight=50
 let g:CommandTMatchWindowAtTop=1
 
 " Run rspec in a tmux pane
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --fail-fast\n")'
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader
 " situations.
