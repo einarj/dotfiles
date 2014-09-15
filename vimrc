@@ -38,6 +38,7 @@ Bundle 'AndrewRadev/linediff.vim'
 " Syntax
 Bundle 'tpope/vim-haml'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'groenewege/vim-less'
 
 " ================
 " Ruby stuff
