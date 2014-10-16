@@ -46,6 +46,9 @@ source $HOME/.dotfiles/zsh/functions
 source $HOME/.dotfiles/zsh/git-prompt/zshrc.sh
 PROMPT='%B%m%~%b$(git_super_status) %# '
 
+
+export PYTHONSTARTUP=$HOME/.pyrc
+
 # Customize to your needs...
 #export PATH=bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180/bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/ben/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/ben/.rvm/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
