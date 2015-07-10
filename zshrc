@@ -40,7 +40,7 @@ autoload -U compinit && compinit
 [[ -s "/Users/einar/.rvm/scripts/rvm" ]] && source "/Users/einar/.rvm/scripts/rvm"
 
 # Source my custom files after oh-my-zsh so I can override things.
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 source $HOME/.dotfiles/zsh/aliases
 source $HOME/.dotfiles/zsh/functions
 source $HOME/.dotfiles/zsh/git-prompt/zshrc.sh
@@ -58,3 +58,6 @@ export PATH=$PATH:/usr/texbin
 export PATH=/usr/local/bin:$PATH
 
 export EDITOR="vim"
+
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
