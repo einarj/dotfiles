@@ -7,6 +7,9 @@ call vundle#rc()
 " Let Vundle manage Vundle (required)!
 Bundle 'gmarik/vundle'
 
+" Status line
+Bundle 'bling/vim-airline'
+
 " My bundles
 Bundle 'ervandew/supertab'
 Bundle 'kchmck/vim-coffee-script'
@@ -22,6 +25,9 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wincent/Command-T'
 Bundle 'mileszs/ack.vim'
+
+" Tmux integration
+Bundle 'edkolev/tmuxline.vim'
 
 " TDD with RSpec
 Bundle 'thoughtbot/vim-rspec'
@@ -123,13 +129,13 @@ vmap <Leader>rem :ExtractMethod<cr>
 
 map <Leader>y :!rspec --drb %<cr>
 map <Leader>u :Runittest<cr>
-map <Leader>vc :RVcontroller<cr>
-map <Leader>vf :RVfunctional<cr>
+map <Leader>vc :Vcontroller<cr>
+map <Leader>vf :Vfunctional<cr>
 map <Leader>vg :vsp<cr>:grep 
 map <Leader>vi :tabe ~/.vimrc<CR>
-map <Leader>vu :RVunittest<CR>
-map <Leader>vm :RVmodel<cr>
-map <Leader>vv :RVview<cr>
+map <Leader>vu :Vunittest<CR>
+map <Leader>vm :Vmodel<cr>
+map <Leader>vv :Vview<cr>
 map <Leader>w <C-w>w
 map <Leader>x :exec getline(".")<cr>
 
@@ -165,7 +171,7 @@ set autoread
 set wmh=0
 set viminfo+=!
 set guioptions-=T
-set guifont=Triskweline_10:h10
+set guifont=Triskweline_12:h10
 set et
 set sw=2
 set smarttab
@@ -333,6 +339,16 @@ let g:CommandTMatchWindowAtTop=1
 
 " Run rspec in a tmux pane
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --fail-fast\n")'
+
+" Airline and Tmux status line
+let g:tmuxline_powerline_seperators = 0
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
+let g:airline_theme='kolor'
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader
 " situations.
