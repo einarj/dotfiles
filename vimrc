@@ -80,14 +80,8 @@ map <Leader>cj :Rjspec client/
 map <Leader>cm :Rjmodel client/
 map <Leader>ct :Rtemplate client/
 map <Leader>cv :Rjview client/
-map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
-map <Leader>d odebugger<cr>puts 'debugger'<esc>:w<cr>
-map <Leader>dr :e ~/Dropbox<cr>
-map <Leader>dj :e ~/Dropbox/notes/debugging_journal.txt<cr>
-map <Leader>ec :e ~/code/
 map <Leader>gac :Gcommit -m -a ""<LEFT>
 map <Leader>gc :Gcommit -m ""<LEFT>
-map <Leader>gr :e ~/Dropbox/docs/journal<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
 map <Leader>f :call OpenFactoryFile()<CR>
@@ -96,7 +90,7 @@ map <Leader>fa :sp test/factories.rb<CR>
 map <Leader>h :CommandT<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>j :CommandT app/assets/javascripts<cr>client/
-map <Leader>m :Rmodel 
+map <Leader>m :Emodel 
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 map <Leader>pn :sp ~/Dropbox/work/thoughtbot/notes/project-notes.txt<cr>
@@ -108,16 +102,15 @@ map <Leader>rt q:?!ruby<cr><cr>
 map <Leader>rw :%s/\s\+$//<cr>:w<cr>
 map <Leader>sc :sp db/schema.rb<cr>
 map <Leader>sg :sp<cr>:grep 
-map <Leader>sj :call OpenJasmineSpecInBrowser()<cr>
-map <Leader>sm :RSmodel 
+map <Leader>sm :ESmodel 
 map <Leader>sp yss<p>
 map <Leader>sn :e ~/.vim/snippets/ruby.snippets<CR>
 map <Leader>so :so %<cr>
 map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
 map <Leader>ss ds)i <esc>:w<cr>
-map <Leader>st :!ruby -Itest % -n "//"<left><left>
-map <Leader>su :RSunittest 
-map <Leader>sv :RSview 
+vmap <Leader>st <Plug>SendSelectionToTmux
+map <Leader>su :ESunittest 
+map <Leader>sv :ESview 
 " vim-rspec
 map <Leader>t :w<cr>:call RunCurrentSpecFile()<CR>
 map <Leader>s :w<cr>:call RunNearestSpec()<CR>
@@ -128,7 +121,7 @@ map <Leader>a :w<cr>:call RunAllSpecs()<CR>
 vmap <Leader>rem :ExtractMethod<cr>
 
 map <Leader>y :!rspec --drb %<cr>
-map <Leader>u :Runittest<cr>
+map <Leader>u :Eunittest<cr>
 map <Leader>vc :Vcontroller<cr>
 map <Leader>vf :Vfunctional<cr>
 map <Leader>vg :vsp<cr>:grep 
