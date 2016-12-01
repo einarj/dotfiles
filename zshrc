@@ -36,9 +36,6 @@ stty stop undef
 # Enable autocomplete for git
 autoload -U compinit && compinit
 
-# RVM 
-[[ -s "/Users/einar/.rvm/scripts/rvm" ]] && source "/Users/einar/.rvm/scripts/rvm"
-
 # Source my custom files after oh-my-zsh so I can override things.
 # source /usr/local/bin/virtualenvwrapper.sh
 source $HOME/.dotfiles/zsh/aliases
@@ -49,15 +46,16 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 
 export PYTHONSTARTUP=$HOME/.pyrc
 
-# Customize to your needs...
-#export PATH=bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180/bin:/Users/ben/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/ben/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/ben/.rvm/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-
 export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/texbin
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=~/.rbenv/shims:$PATH
 
 export EDITOR="vim"
 
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+eval "$(rbenv init -)"

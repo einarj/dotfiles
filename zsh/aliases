@@ -44,6 +44,7 @@ alias gp='git push'
 alias gpf='git push -f'
 alias gpr='git pull --rebase'
 alias grc='git rebase --continue'
+alias gst='git status'
 alias gurad='guard'
 alias h='sync'
 alias he='cd ~/code/hacker-engine'
@@ -124,3 +125,18 @@ alias db-backups='heroku pgbackups --remote production'
 
 alias levelup-get-production='curl -o ~/Downloads/latest.dump `heroku pgbackups:url --app levelup-production`'
 alias levelup-db-fix='killruby ; rake db:drop:all db:create:all ; pg_restore --verbose --clean --no-acl --no-owner -d levelup_development ~/Downloads/latest.dump -j 8 ; prepdb && rake levelup:dev:create_admin && rails runner CreditCard.delete_all'
+
+# -----------------------------------------
+# # Functions for logging git activity
+# # -----------------------------------------
+
+function branch {
+  git symbolic-ref -q --short HEAD
+}
+# Git Push (Current Branch) Origin
+function gpho(){
+  git push origin `branch`
+}
+function gplo(){
+  git pull origin `branch`
+}

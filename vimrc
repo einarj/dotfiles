@@ -1,3 +1,5 @@
+scriptencoding utf-8
+set encoding=utf-8
 " ========================================================================
 " Vundle stuff
 " ========================================================================
@@ -45,6 +47,9 @@ Bundle 'AndrewRadev/linediff.vim'
 Bundle 'tpope/vim-haml'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'groenewege/vim-less'
+
+" Elixir
+Bundle 'elixir-lang/vim-elixir'
 
 " ================
 " Ruby stuff
