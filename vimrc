@@ -10,22 +10,23 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Status line
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 
 " My bundles
-Bundle 'ervandew/supertab'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'ajh17/VimCompletesMe'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rhubarb'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'wincent/Command-T'
+" Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 
 " Tmux integration
@@ -47,6 +48,7 @@ Bundle 'AndrewRadev/linediff.vim'
 Bundle 'tpope/vim-haml'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'groenewege/vim-less'
+Bundle 'ngmy/vim-rubocop'
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
@@ -310,12 +312,12 @@ nmap j gj
 
 
 " Set up some useful Rails.vim bindings for working with Backbone.js
-autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
-autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jview       app/assets/javascripts/views       -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jcollection app/assets/javascripts/collections -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jrouter     app/assets/javascripts/routers     -glob=**/*  -suffix=.coffee
-autocmd User Rails Rnavcommand jspec       spec/javascripts                   -glob=**/*  -suffix=.coffee
+" autocmd User Rails Rnavcommand template    app/assets/templates               -glob=**/*  -suffix=.jst.ejs
+" autocmd User Rails Rnavcommand jmodel      app/assets/javascripts/models      -glob=**/*  -suffix=.coffee
+" autocmd User Rails Rnavcommand jview       app/assets/javascripts/views       -glob=**/*  -suffix=.coffee
+" autocmd User Rails Rnavcommand jcollection app/assets/javascripts/collections -glob=**/*  -suffix=.coffee
+" autocmd User Rails Rnavcommand jrouter     app/assets/javascripts/routers     -glob=**/*  -suffix=.coffee
+" autocmd User Rails Rnavcommand jspec       spec/javascripts                   -glob=**/*  -suffix=.coffee
 
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
 set formatoptions-=or
@@ -336,7 +338,8 @@ let g:CommandTMaxHeight=50
 let g:CommandTMatchWindowAtTop=1
 
 " Run rspec in a tmux pane
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --fail-fast\n")'
+"let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --fail-fast\n")'
+let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec} --fail-fast\n")'
 
 " Airline and Tmux status line
 let g:tmuxline_powerline_seperators = 0
@@ -347,6 +350,9 @@ let g:tmuxline_separators = {
     \ 'right_alt' : '<',
     \ 'space' : ' '}
 let g:airline_theme='kolor'
+
+" Make tab-completion context sensitive
+" let g:SuperTabDefaultCompletionType = "context"
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader
 " situations.
@@ -384,7 +390,7 @@ endfunction
 map <Leader>n :call RenameFile()<cr>
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+set list listchars=tab:»·,trail:·,nbsp:·
 
 " ========================================================================
 " End of things set by me.

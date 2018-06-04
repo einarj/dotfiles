@@ -46,7 +46,7 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 
 export PYTHONSTARTUP=$HOME/.pyrc
 
-export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 export PATH=$PATH:/usr/texbin
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=~/.rbenv/shims:$PATH
@@ -59,3 +59,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 eval "$(rbenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/einar/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/einar/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/einar/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/einar/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
