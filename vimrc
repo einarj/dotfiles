@@ -43,6 +43,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " Refactoring tools
 Bundle 'sandeepravi/refactor-rails.vim'
 Bundle 'AndrewRadev/linediff.vim'
+Bundle 'wfleming/vim-codeclimate'
 
 " Syntax
 Bundle 'tpope/vim-haml'
