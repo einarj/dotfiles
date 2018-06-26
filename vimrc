@@ -50,15 +50,29 @@ Bundle 'tpope/vim-haml'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'groenewege/vim-less'
 Bundle 'ngmy/vim-rubocop'
+Bundle 'vim-syntastic/syntastic'
+
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
+
+let mapleader = ","
 
 " ================
 " Ruby stuff
 " ================
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
+
+" Syntastic + rubocop
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+function! RubocopAutocorrect()
+  execute "!rubocop -a " . bufname("%")
+  call SyntasticCheck()
+endfunction
+let g:vimrubocop_config = '.rubocop.yml'
+
+map <silent> <Leader>cop :call RubocopAutocorrect()<cr>
 
 augroup myfiletypes
   " Clear old autocmds in group
@@ -73,7 +87,6 @@ augroup END
 runtime macros/matchit.vim
 " ================
 
-let mapleader = ","
 
 map <Leader>ac :sp app/controllers/application_controller.rb<cr>
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
@@ -82,7 +95,7 @@ nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
 vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 map <Leader>cc :!cucumber --drb %<CR>
 map <Leader>cu :Tabularize /\|<CR>
-map <Leader>co ggVG"*y
+" map <Leader>co ggVG"*y
 map <Leader>cc :Rjcollection client/
 map <Leader>cj :Rjspec client/
 map <Leader>cm :Rjmodel client/
