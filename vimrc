@@ -3,11 +3,12 @@ set encoding=utf-8
 " ========================================================================
 " Vundle stuff
 " ========================================================================
-set rtp+=~/.vim/bundle/vundle/
+"set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " Let Vundle manage Vundle (required)!
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 " Status line
 Bundle 'vim-airline/vim-airline'
