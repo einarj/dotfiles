@@ -1,6 +1,5 @@
 scriptencoding utf-8
 set encoding=utf-8
-colorscheme new-railscasts
 " ========================================================================
 " Vundle stuff
 " ========================================================================
@@ -97,12 +96,6 @@ nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
 vmap <Leader>bed "td?describe<cr>obed<tab><esc>"tpkdd/end<cr>o<esc>:nohl<cr>
 map <Leader>cc :!cucumber --drb %<CR>
 map <Leader>cu :Tabularize /\|<CR>
-" map <Leader>co ggVG"*y
-map <Leader>cc :Rjcollection client/
-map <Leader>cj :Rjspec client/
-map <Leader>cm :Rjmodel client/
-map <Leader>ct :Rtemplate client/
-map <Leader>cv :Rjview client/
 map <Leader>gac :Gcommit -m -a ""<LEFT>
 map <Leader>gc :Gcommit -m ""<LEFT>
 map <Leader>gs :Gstatus<CR>
@@ -114,11 +107,8 @@ map <Leader>h :CommandT<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>j :CommandT app/assets/javascripts<cr>client/
 map <Leader>m :Emodel 
-map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
-map <Leader>pn :sp ~/Dropbox/work/thoughtbot/notes/project-notes.txt<cr>
 map <Leader>ra :%s/
-map <Leader>rd :!bundle exec rspec % --format documentation<CR>
 map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
 map <Leader>rs :vsp <C-r>#<cr><C-w>w
 map <Leader>rt q:?!ruby<cr><cr>
@@ -127,7 +117,6 @@ map <Leader>sc :sp db/schema.rb<cr>
 map <Leader>sg :sp<cr>:grep 
 map <Leader>sm :ESmodel 
 map <Leader>sp yss<p>
-map <Leader>sn :e ~/.vim/snippets/ruby.snippets<CR>
 map <Leader>so :so %<cr>
 map <Leader>sq j<c-v>}klllcs<esc>:wq<cr>
 map <Leader>ss ds)i <esc>:w<cr>
@@ -416,6 +405,7 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
+  colorscheme vividchalk
   set hlsearch
 endif
 
