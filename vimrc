@@ -53,6 +53,9 @@ Bundle 'groenewege/vim-less'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'vim-syntastic/syntastic'
 
+" Autocomplete
+Bundle 'Shougo/deoplete.nvim'
+
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
@@ -74,6 +77,9 @@ endfunction
 let g:vimrubocop_config = '.rubocop.yml'
 
 map <silent> <Leader>cop :call RubocopAutocorrect()<cr>
+
+" Deoplete enabled by default
+let g:deoplete#enable_at_startup = 1
 
 augroup myfiletypes
   " Clear old autocmds in group
@@ -307,6 +313,25 @@ function! SetTestFileWithLine()
   let g:bjo_test_file_line=line(".")
 endfunction
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Automatically create directories in path if missing
+" This removes the extra step of kdir -p
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function s:MkNonExDir(file, buf)
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
+    endif
+  endif
+endfunction
+
+augroup BWCCreateDir
+  autocmd!
+  autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 inoremap <Tab> <C-P>
