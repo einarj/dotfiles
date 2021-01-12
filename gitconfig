@@ -3,7 +3,8 @@
 	email = einar@codelette.com
 [alias]
 	co = checkout
-        cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+#        cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+        cleanup = !git remote prune origin && git gc
 [color]
 	diff = auto
 	status = auto

@@ -47,15 +47,13 @@ Bundle 'AndrewRadev/linediff.vim'
 Bundle 'wfleming/vim-codeclimate'
 
 " Syntax
-Bundle 'tpope/vim-haml'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'groenewege/vim-less'
 Bundle 'ngmy/vim-rubocop'
-Bundle 'vim-syntastic/syntastic'
+Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
+Bundle 'w0rp/ale'
 
 " Autocomplete
 Bundle 'Shougo/deoplete.nvim'
-
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
@@ -68,18 +66,16 @@ let mapleader = ","
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
-" Syntastic + rubocop
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 function! RubocopAutocorrect()
   execute "!rubocop -a " . bufname("%")
-  call SyntasticCheck()
 endfunction
 let g:vimrubocop_config = '.rubocop.yml'
-
 map <silent> <Leader>cop :call RubocopAutocorrect()<cr>
 
 " Deoplete enabled by default
 let g:deoplete#enable_at_startup = 1
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 augroup myfiletypes
   " Clear old autocmds in group
