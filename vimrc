@@ -53,7 +53,7 @@ Bundle 'mxw/vim-jsx'
 Bundle 'w0rp/ale'
 
 " Autocomplete
-Bundle 'Shougo/deoplete.nvim'
+" Bundle 'Shougo/deoplete.nvim'
 
 " Elixir
 Bundle 'elixir-lang/vim-elixir'
