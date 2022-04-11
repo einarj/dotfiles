@@ -8,6 +8,17 @@
 chpwd() {
   ls -lrthG
 }
+# Find and set branch name var if in git repository.
+# function git_branch_name()
+# {
+#   branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+#   if [[ $branch == "" ]];
+#   then
+#     :
+#   else
+#     echo '- ('$branch')'
+#   fi
+# }
 
 # Save a ton of history
 HISTSIZE=20000
@@ -42,13 +53,15 @@ source $HOME/.dotfiles/zsh/aliases
 source $HOME/.dotfiles/zsh/functions
 source $HOME/.dotfiles/zsh/git-prompt/zshrc.sh
 PROMPT='%B%m%~%b$(git_super_status) %# '
+# PROMPT='%B%m%~%b$(git_branch_name) %# '
 
 
 export PYTHONSTARTUP=$HOME/.pyrc
 
-export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin/:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin/:$PATH"
 export PATH=$PATH:/usr/texbin
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
 export PATH=~/.rbenv/shims:$PATH
 
 export EDITOR="vim"
@@ -61,10 +74,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 eval "$(rbenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/einar/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/einar/bin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/einar/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/einar/bin/google-cloud-sdk/completion.zsh.inc'; fi
 
 
 eval "$(rbenv init -)"
