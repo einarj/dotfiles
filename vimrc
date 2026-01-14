@@ -55,9 +55,6 @@ Bundle 'w0rp/ale'
 " Autocomplete
 " Bundle 'Shougo/deoplete.nvim'
 
-" Elixir
-Bundle 'elixir-lang/vim-elixir'
-
 let mapleader = ","
 
 " ================
@@ -365,7 +362,7 @@ let g:CommandTMatchWindowAtTop=1
 
 " Run rspec in a tmux pane
 "let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --fail-fast\n")'
-let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec} --fail-fast\n")'
+let g:rspec_command = 'call Send_to_Tmux("docker-compose exec web bundle exec rspec {spec} --fail-fast\n")'
 
 " Airline and Tmux status line
 let g:tmuxline_powerline_seperators = 0

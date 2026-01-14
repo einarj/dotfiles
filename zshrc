@@ -58,10 +58,11 @@ PROMPT='%B%m%~%b$(git_super_status) %# '
 
 export PYTHONSTARTUP=$HOME/.pyrc
 
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin/:$PATH"
+# export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin/:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/16/bin/:$PATH"
 export PATH=$PATH:/usr/texbin
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+export PATH=/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
 export PATH=~/.rbenv/shims:$PATH
 
 export EDITOR="vim"
