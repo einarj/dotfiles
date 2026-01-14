@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ ! -f ".env" ]]; then
+  echo "Missing .env in current directory." >&2
+  exit 1
+fi
+
+# Export variables from .env into the current shell.
+set -a
+. ".env"
+set +a
+
+if [[ -z "${POSTGRES_DATABASE:-}" || -z "${POSTGRES_USER:-}" ]]; then
+  echo "POSTGRES_DATABASE and POSTGRES_USER must be set in .env." >&2
+  exit 1
+fi
+
+psql -v ON_ERROR_STOP=1 -h localhost -U "$POSTGRES_USER" -d postgres <<SQL
+CREATE DATABASE "${POSTGRES_DATABASE}"
+  WITH ENCODING 'UTF8'
+       LC_COLLATE 'is_IS.UTF-8'
+       LC_CTYPE 'is_IS.UTF-8'
+       TEMPLATE template0;
+GRANT ALL PRIVILEGES ON DATABASE "${POSTGRES_DATABASE}" TO "${POSTGRES_USER}";
+ALTER DATABASE "${POSTGRES_DATABASE}" OWNER TO "${POSTGRES_USER}";
+SQL
