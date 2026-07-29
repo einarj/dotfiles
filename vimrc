@@ -196,8 +196,10 @@ set tags=./tags;
 " Use Silver Searcher instead of grep
 set grepprg=ag
 
-" Get rid of the delay when hitting esc!
-set noesckeys
+" NOTE: 'set noesckeys' used to live here to kill the esc delay. It also breaks
+" bracketed paste -- vim can't see the <Esc>[200~ markers in insert mode -- so
+" pasted text gets auto-indented and re-wrapped. The ttimeout/ttimeoutlen
+" settings further down handle the esc delay without that side effect.
 
 " Make the omnicomplete text readable
 :highlight PmenuSel ctermfg=black
@@ -236,9 +238,38 @@ set wildmenu
 set wildmode=list:full
 
 " (Hopefully) removes the delay when hitting esc in insert mode
-set noesckeys
+" ('noesckeys' deliberately not set here -- it breaks bracketed paste.)
 set ttimeout
 set ttimeoutlen=1
+
+" ========================================================================
+" Pasting
+" ========================================================================
+" Bracketed paste: the terminal wraps pasted text in markers so vim knows it
+" was pasted rather than typed, and skips autoindent, textwidth wrapping,
+" abbreviations and insert-mode mappings for the duration. Vim 8 sets this up
+" on its own for known terminals; this block covers the ones it misses.
+if !has('nvim') && &term =~ 'xterm\|screen\|tmux\|alacritty\|kitty\|ghostty\|wezterm'
+  let &t_BE = "\<Esc>[?2004h"
+  let &t_BD = "\<Esc>[?2004l"
+  let &t_PS = "\<Esc>[200~"
+  let &t_PE = "\<Esc>[201~"
+endif
+
+" Manual escape hatch if a terminal doesn't support bracketed paste: F2 to
+" toggle paste mode on, paste, F2 again.
+if exists('&pastetoggle')
+  set pastetoggle=<F2>
+endif
+
+" Commit messages: keep the 72-char guide visible, but don't let vim reflow
+" text as it arrives. (Belt-and-braces -- bracketed paste already suppresses
+" this while pasting.)
+augroup gitcommit_paste
+  autocmd!
+  autocmd FileType gitcommit setlocal formatoptions-=t formatoptions-=c
+  autocmd FileType gitcommit setlocal colorcolumn=73
+augroup END
 
 " Turn on spell-checking in markdown and text.
 " au BufRead,BufNewFile *.md,*.txt setlocal spell
